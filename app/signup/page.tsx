@@ -28,13 +28,14 @@ export default function SignupPage() {
       setLoading(true);
       const response = await axios.post("/api/users/signup", user)
       console.log("Signup successful", response.data);
+      toast.success("Signup successful! Redirecting to login...");
       router.push("/login");
     } 
     
     catch (error : any) {
       console.log("Signup failed", error);
       console.log(error.message);
-      toast.error("Signup failed. Please try again later.",error.message);
+      toast.error(error.message || "Signup failed. Please try again later.");
     }
     
     finally{
@@ -86,8 +87,8 @@ export default function SignupPage() {
           placeholder="Enter your password"
           />
         
-        <button className="bg-blue-500 text-white rounded-md p-2 mt-4" onClick={onSignup}>
-          {buttonDisabled ? "No Signup" : "Signup"}
+        <button className="bg-blue-500 text-white rounded-md p-2 mt-4 disabled:opacity-50" onClick={onSignup} disabled={buttonDisabled}>
+          {loading ? "Processing..." : buttonDisabled ? "No Signup" : "Signup"}
         </button> 
         <Link className="text-blue-500 mt-4" href={"/login"}>Already have an account? Login</Link>
     </div>

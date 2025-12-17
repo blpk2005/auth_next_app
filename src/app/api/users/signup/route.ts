@@ -1,3 +1,4 @@
+// This file is deprecated. Use /app/api/users/signup/route.ts instead.
 import { connect } from "@/dbConfig/dbConfig";
 import User from "@/models/userModel.js";
 import { NextRequest, NextResponse } from "next/server";
