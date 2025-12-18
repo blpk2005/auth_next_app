@@ -37,6 +37,8 @@ export async function POST(request: NextRequest) {
         })
         response.cookies.set("token", token, {
             httpOnly: true,
+            path: "/",
+            sameSite: "lax",
         });
         return response;
     } catch (error: any) {

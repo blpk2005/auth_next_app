@@ -12,11 +12,10 @@ export default function ProfilePage() {
         try {
             await axios.get("/api/users/logout");
             toast.success("Logout successful");
-            
+            router.push("/login"); // Redirect to login after logout
         } catch (error: any) {
             console.log("Logout failed", error.message);
             toast.error(error.message || "Logout failed. Please try again later."); 
-            
         }
     }
 
